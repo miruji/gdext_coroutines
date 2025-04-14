@@ -1,6 +1,6 @@
 # gdext_coroutines
 
-"Run Rust coroutines and async code in Godot 4.2+ (through GDExtension), inspired on Unity's Coroutines design."
+"Run Rust coroutines and async code in Godot 4.4+ (through GDExtension), inspired on Unity's Coroutines design."
 
 # Beware
 
