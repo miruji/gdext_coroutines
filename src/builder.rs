@@ -102,7 +102,7 @@ impl<R> CoroutineBuilder<R>
 	
 	#[cfg(feature = "async")]
 	#[doc(hidden)]
-	pub unsafe fn new_async_task_unchecked(
+	pub fn new_async_task_unchecked(
 		owner: Gd<Node>,
 		f: impl std::future::Future<Output = R> + Unpin + 'static,
 	) -> CoroutineBuilder<R> {

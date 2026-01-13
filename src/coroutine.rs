@@ -172,7 +172,7 @@ impl SpireCoroutine {
 				}
 				OnFinishCall::Callable(callable) => {
 					if callable.is_valid() {
-						callable.callv(&VariantArray::from(&[result.clone()]));
+						callable.callv(&VarArray::from(&[result.clone()]));
 					}
 				}
 			}
@@ -183,10 +183,10 @@ impl SpireCoroutine {
 	}
 
 	fn de_spawn(&mut self) {
-		let mut base = self.base().to_godot();
+		let mut base = self.base_mut();
 
 		if let Some(mut parent) = base.get_parent() {
-			parent.remove_child(&base)
+			parent.remove_child(&*base)
 		}
 
 		base.queue_free();

@@ -35,7 +35,7 @@ pub trait StartAsyncTask {
 	/// # Safety
 	/// 
 	/// Caller must ensure that `f` cannot cause data races.
-	unsafe fn start_async_task_unchecked<R: 'static + ToGodot>(
+	fn start_async_task_unchecked<R: 'static + ToGodot>(
 		&self,
 		f: impl Future<Output = R> + Unpin + 'static
 	) -> Gd<SpireCoroutine> {
@@ -78,7 +78,7 @@ pub trait StartAsyncTask {
 	/// # Safety
 	/// 
 	/// Caller must ensure that `f` cannot cause data races.
-	unsafe fn async_task_unchecked<R: 'static + ToGodot>(
+	fn async_task_unchecked<R: 'static + ToGodot>(
 		&self,
 		f: impl Future<Output = R> + Unpin + 'static
 	) -> CoroutineBuilder<R>;
@@ -98,7 +98,7 @@ impl<TSelf> StartAsyncTask for Gd<TSelf>
 		CoroutineBuilder::new_async_task(self.clone().upcast(), f)
 	}
 
-	unsafe fn async_task_unchecked<R: 'static + ToGodot>(
+	fn async_task_unchecked<R: 'static + ToGodot>(
 		&self,
 		f: impl Future<Output = R> + Unpin + 'static
 	) -> CoroutineBuilder<R> {
@@ -117,15 +117,15 @@ impl<T> StartAsyncTask for &T
 		where
 			R: 'static + ToGodot + Send,
 	{
-		let base = self.base_field().to_gd();
+		let base = self.base_field().to_init_gd();
 		CoroutineBuilder::new_async_task(base.upcast(), f)
 	}
 
-	unsafe fn async_task_unchecked<R: 'static + ToGodot>(
+	fn async_task_unchecked<R: 'static + ToGodot>(
 		&self,
 		f: impl Future<Output = R> + Unpin + 'static
 	) -> CoroutineBuilder<R> {
-		let base = self.base_field().to_gd();
+		let base = self.base_field().to_init_gd();
 		CoroutineBuilder::new_async_task_unchecked(base.upcast(), f)
 	}
 }
@@ -141,15 +141,15 @@ impl<T> StartAsyncTask for &mut T
 		where
 			R: 'static + ToGodot + Send,
 	{
-		let base = self.base_field().to_gd();
+		let base = self.base_field().to_init_gd();
 		CoroutineBuilder::new_async_task(base.upcast(), f)
 	}
 
-	unsafe fn async_task_unchecked<R: 'static + ToGodot>(
+	fn async_task_unchecked<R: 'static + ToGodot>(
 		&self,
 		f: impl Future<Output = R> + Unpin + 'static
 	) -> CoroutineBuilder<R> {
-		let base = self.base_field().to_gd();
+		let base = self.base_field().to_init_gd();
 		CoroutineBuilder::new_async_task_unchecked(base.upcast(), f)
 	}
 }

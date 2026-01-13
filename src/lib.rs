@@ -13,7 +13,7 @@
 #![allow(private_bounds)]
 
 
-#![doc = include_str!("../../README.md")]
+#![doc = include_str!("../README.md")]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
 use godot::builtin::{Callable, Variant};
@@ -22,7 +22,6 @@ mod coroutine;
 mod yielding;
 mod builder;
 mod start_coroutine;
-mod pinky_promise;
 
 #[cfg(feature = "async")]
 mod start_async_task;

@@ -83,7 +83,7 @@ pub fn wait_while(f: impl FnMut() -> bool + 'static) -> SpireYield {
 /// `f` is invoked whenever the coroutine is polled. 
 /// 
 /// If un-paused, the coroutine is polled either on [process](INode::process) 
-/// or [physics_process](INode::physics_process))
+/// or [physics_process](INode::physics_process)
 ///
 /// # Example
 ///
@@ -109,7 +109,7 @@ pub fn wait_until(mut f: impl FnMut() -> bool + 'static) -> SpireYield {
 /// Yield for a number of frames.
 /// 
 /// A frame equals a single [process](INode::process) 
-/// or [physics_process](INode::physics_process)) call, depending on the coroutine's [PollMode].
+/// or [physics_process](INode::physics_process) call, depending on the coroutine's [PollMode].
 ///
 /// # Example
 ///
