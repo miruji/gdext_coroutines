@@ -18,7 +18,8 @@ publish = false
 crate-type = ["lib", "cdylib"]
 
 [dependencies]
-godot = {git = "https://github.com/godot-rust/gdext", branch = "master", features = ["experimental-threads"]}
+#godot = {git = "https://github.com/godot-rust/gdext", branch = "master", features = ["experimental-threads"]}
+godot = { git = "https://github.com/godot-rust/gdext", rev = "f8ce146e25f326abc8c13fb621e888ab4b03e3f8", features = ["experimental-threads"] }
 smol = { version = "2.0", optional = true }
 
 [features]
